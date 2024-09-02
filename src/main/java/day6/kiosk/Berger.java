@@ -7,12 +7,14 @@ public class Berger {
     public static void main(String[] args) {
         // 햄버거 키오스크 만들기
 
+        int remainder = 0;
+
         ArrayList<Burger> burgers = new ArrayList<>();
         ArrayList<Burger> burgerCart = new ArrayList<>();
         ArrayList<Side> Side = new ArrayList<>();
         ArrayList<Side> SideCart = new ArrayList<>();
-        ArrayList<Drinkables> Drinkables = new ArrayList<>();
-        ArrayList<Drinkables> DrinkablesCart = new ArrayList<>();
+        ArrayList<Drink> Drink = new ArrayList<>();
+        ArrayList<Drink> DrinkCart = new ArrayList<>();
 
         Burger b1 = new Burger("한우불고기버거", 6000);
         Burger b2 = new Burger("치즈버거", 3000);
@@ -34,15 +36,15 @@ public class Berger {
         Side.add(s3);
         Side.add(s4);
 
-        Drinkables d1 = new Drinkables("콜라", 1000);
-        Drinkables d2 = new Drinkables("에이드", 2000);
-        Drinkables d3 = new Drinkables("커피", 1500);
-        Drinkables d4 = new Drinkables("쉐이크", 2500);
+        Drink d1 = new Drink("콜라", 1000);
+        Drink d2 = new Drink("에이드", 2000);
+        Drink d3 = new Drink("커피", 1500);
+        Drink d4 = new Drink("쉐이크", 2500);
 
-        Drinkables.add(d1);
-        Drinkables.add(d2);
-        Drinkables.add(d3);
-        Drinkables.add(d4);
+        Drink.add(d1);
+        Drink.add(d2);
+        Drink.add(d3);
+        Drink.add(d4);
 
         Scanner sc = new Scanner(System.in);
         System.out.println("햄버거 키오스크 v1");
@@ -67,7 +69,10 @@ public class Berger {
             System.out.println("]");
 
             System.out.println("음료수: []");
-            System.out.println("총금액 : 0");
+
+
+
+            //System.out.println("총금액 : " + burgerCart.get(i) + SideCart.get(i) + DrinkCart.get(i));
             System.out.print("무엇을 하시겠습니까 : ");
             int menu = Integer.parseInt(sc.nextLine());
 
@@ -99,6 +104,10 @@ public class Berger {
                 System.out.println(side.name + "을(를) 고르셨습니다.");
 
             }
+
+
+
+
         }
             }
         }
