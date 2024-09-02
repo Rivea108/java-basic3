@@ -19,12 +19,15 @@ public class Exam3 {
             warrior.attack();
             // 출력 : 홍길동이/가 칼로 공격합니다.
 
+            Bow b1 = new Bow();
+            b1.blast();
+
             Sword s1 = new Sword();
             s1.divide();
 
             Weapon w1 = s1;
-                 //w1 = b1;
-                   w1.type();
+                   w1 = b1;
+                   w1.use();
 
         }
     }
@@ -40,27 +43,29 @@ public class Exam3 {
             System.out.println("안녕하세요. 저는 " + age + "살 " + name + " 입니다.");
         }
 
-        public void attack() {
-            System.out.println(name + " 이/가 " + weapon + "로 공격합니다.");
-
+//        void attack() {
+//            System.out.println(name + " 이/가 " + weapon + "로 공격합니다.");
+        void attack() {
+            System.out.print(name + "이/가 ");
+            Sword.divide();
         }
     }
 
     class Weapon {
-        public void type() {
-            System.out.println("휘두르다.");
+        public void use() {
+            System.out.println("무기로 공격합니다..");
         }
     }
 
     class Sword extends Weapon {
-        public void divide() {
-            System.out.println("가르다");
+        public static void divide() {
+            System.out.println("칼로 공격합니다.");
 }
     }
 
     class Bow extends Weapon {
         public void blast() {
-            System.out.println("쏘다.");
+            System.out.println("활로 공격합니다.");
         }
     }
 
