@@ -14,11 +14,16 @@ public class Exam3 {
             warrior.weapon = new Bow();
             warrior.attack();
             // 출력 : 홍길동이/가 활로 공격합니다.
+            warrior.skill();
+            //warrior.skill() = "불화살";
+            // 출력 : 홍길동이/가 불화살 스킬을 사용합니다. 1.5배(15)의 피해를 입힙니다.
 
             warrior.weapon = new Sword();
             warrior.attack();
             // 출력 : 홍길동이/가 칼로 공격합니다.
-
+            warrior.skill();
+            //warrior.skill() = "연속 베기 스킬";
+            // 출력 : 홍길동이/가 연속 베기 스킬을 사용합니다. 2배(30)의 피해를 입힙니다.
             Bow b1 = new Bow();
             b1.blast();
 
@@ -48,6 +53,9 @@ public class Exam3 {
         void attack() {
             System.out.print(name + "이/가 ");
             Sword.divide();
+        }
+        void skill() {
+            //System.out.println(name + "d이/가 " + skill + "을 사용합니다. 2배(30)의 피해를 입힙니다.");
         }
     }
 

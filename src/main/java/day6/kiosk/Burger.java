@@ -7,5 +7,12 @@ public class Burger {
     public Burger(String name, int price) {
         this.name = name;
         this.price = price;
+
+
+
+
+
+
+
     }
 }
