@@ -66,6 +66,7 @@ public class BoardApp {
     }
 
     private void detail() {
+         try {
         System.out.print("상세보기 할 게시물 번호 : ");
         int targetId = Integer.parseInt(sc.nextLine());
 
@@ -99,42 +100,53 @@ public class BoardApp {
                 return;
             }
         }
+        } catch (NumberFormatException e) {
+             System.out.println("숫자를 입력하세요.");
+        }
     }
 
     private void delete() {
-        System.out.print("삭제할 게시물 번호 : ");
-        int targetId = Integer.parseInt(sc.nextLine());
-        Post post = postRepository.findPostById(targetId);
+        try {
+            System.out.print("삭제할 게시물 번호 : ");
+            int targetId = Integer.parseInt(sc.nextLine());
+            Post post = postRepository.findPostById(targetId);
 
-        if (post == null) {
-            System.out.println("없는 게시물 번호입니다.");
-            return;
-        }
+            if (post == null) {
+                System.out.println("없는 게시물 번호입니다.");
+                return;
+            }
 
-        postRepository.delete(post);
-        System.out.println("삭제가 완료되었습니다.");
-
+            postRepository.delete(post);
+            System.out.println("삭제가 완료되었습니다.");
+        } catch (NumberFormatException n) {
+            System.out.println("숫자를 입력하세요.");
+    }
     }
 
     private void update() {
-        System.out.print("수정할 게시물 번호 : ");
-        int targetId = Integer.parseInt(sc.nextLine());
+        try {
+            System.out.print("수정할 게시물 번호 : ");
+            int targetId = Integer.parseInt(sc.nextLine());
 
-        Post post = postRepository.findPostById(targetId);
+            Post post = postRepository.findPostById(targetId);
 
-        if (post == null) {
-            System.out.println("없는 게시물 번호입니다.");
-            return;
-        }
+            if (post == null) {
+                System.out.println("없는 게시물 번호입니다.");
+                return;
+            }
 
-        System.out.print("수정할 제목 : ");
-        String newTitle = sc.nextLine();
-        System.out.print("수정할 내용 : ");
-        String newBody = sc.nextLine();
+            System.out.print("수정할 제목 : ");
+            String newTitle = sc.nextLine();
+            System.out.print("수정할 내용 : ");
+            String newBody = sc.nextLine();
 
-        post.setTitle(newTitle);
-        post.setBody(newBody);
-        System.out.println("수정이 완료되었습니다.");
+            post.setTitle(newTitle);
+            post.setBody(newBody);
+            System.out.println("수정이 완료되었습니다.");
+
+        } catch (NumberFormatException u) {
+            System.out.println("숫자를 입력하세요.");
+    }
     }
 
     private void add() {

@@ -27,8 +27,15 @@ public class PostController {
     public void detail() {
 
         System.out.print("상세보기 할 게시물 번호 : ");
-        int targetId = Integer.parseInt(sc.nextLine());//첫빠따로 시작!!!!!!!!!
-        //System.out.println("=====" + post.getId() + "번 게시글 =====");
+
+        int targetId = getParsedInt(sc.nextLine(), -1);
+
+        if (targetId == -1) {
+            return;
+        }
+
+        //try - catch는 최대한 사용하지 않는게 좋다.
+        //몇가지 상황을 제외하고는 try - catch 사용안하고 if로 처리 다 가능함.
 
         Post post = postRepository.findPostById(targetId);  // 창고에서 꺼내서
 
@@ -61,7 +68,12 @@ public class PostController {
     // command : delete
     public void delete() {
         System.out.print("삭제할 게시물 번호 : ");
-        int targetId = Integer.parseInt(sc.nextLine());
+        int targetId = getParsedInt(sc.nextLine(), -1);
+
+        if (targetId == -1) {
+            return;
+        }
+
         Post post = postRepository.findPostById(targetId);
 
         if (post == null) {
@@ -77,7 +89,12 @@ public class PostController {
     // command : update
     public void update() {
         System.out.print("수정할 게시물 번호 : ");
-        int targetId = Integer.parseInt(sc.nextLine());
+        int targetId = getParsedInt(sc.nextLine(), -1);
+
+        if (targetId == -1) {
+            return;
+        }
+
 
         Post post = postRepository.findPostById(targetId);
 
@@ -120,4 +137,16 @@ public class PostController {
         return formattedDateTime;
 
     }
-}
+
+    public int getParsedInt(String value, int defaulValue) {
+        try {
+            int parsedInt = Integer.parseInt(value);
+            return parsedInt;
+
+            } catch (NumberFormatException e) {
+            System.out.println("숫자만 입력하시오.");
+             }
+ return defaulValue;
+        }
+    }
+
